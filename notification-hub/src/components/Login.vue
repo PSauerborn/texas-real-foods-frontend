@@ -1,7 +1,7 @@
 <template>
     <v-row align="center" justify="center">
         <v-col align="center" justify="center" cols="6">
-            <v-sheet elevation="2">
+
                 <v-row align="center" justify="center">
                     <v-col align="center" justify="center">
                         <h1>Texas Real Foods Notification Hub</h1>
@@ -19,7 +19,7 @@
                         </v-btn>
                     </v-col>
                 </v-row>
-            </v-sheet>
+
         </v-col>
     </v-row>
 </template>

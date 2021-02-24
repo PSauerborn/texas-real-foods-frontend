@@ -34,6 +34,7 @@
                             @notificationRead="getNotifications"
                             :notification_id=notification.notification_id
                             :notification=notification.notification
+                            :api_key=apiKey
                             :key="i"/>
                     </v-row>
                 </v-container>
