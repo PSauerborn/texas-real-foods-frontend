@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+
+  notification-hub:
+    build: ./frontend
+    container_name: texas-real-foods-notification-hub
+    networks:
+    - texas-real-foods
+
+networks:
+  core:
+    name: core
+  texas-real-foods:
+    name: texas-real-foods
