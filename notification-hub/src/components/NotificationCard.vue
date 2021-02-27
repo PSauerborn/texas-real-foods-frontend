@@ -65,13 +65,25 @@ export default {
             let vm = this
             axios({
                 method: 'patch',
-                url: process.env.VUE_APP_BASE_API_URL + '/api/notifications/update/' + vm.notification_id,
+                url: process.env.VUE_APP_BASE_API_URL + 'notifications/update/' + vm.notification_id,
                 headers: {'X-ApiKey': vm.api_key}
             }).then(function (response) {
                 console.log(response)
+                vm.$notify({
+                    group: 'main',
+                    title: 'Notification Cleared',
+                    type: 'success',
+                    text: 'Successfully cleared notification ' + vm.notification_id
+                })
                 vm.$emit('notificationRead')
             }).catch(function (error) {
                 console.log(error)
+                vm.$notify({
+                    group: 'main',
+                    title: 'Failed to Clear',
+                    type: 'error',
+                    text: 'Failed to clear notification ' + vm.notification_id
+                })
             })
         }
     },

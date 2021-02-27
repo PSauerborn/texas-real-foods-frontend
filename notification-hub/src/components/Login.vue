@@ -15,11 +15,10 @@
                             clearable>
                         </v-text-field>
                         <v-btn color="primary" @click="validateApiKey">
-                            Submit
+                            Enter
                         </v-btn>
                     </v-col>
                 </v-row>
-
         </v-col>
     </v-row>
 </template>
@@ -35,7 +34,7 @@ export default {
             let vm = this
             axios({
                 method: 'get',
-                url: process.env.VUE_APP_BASE_API_URL + '/authenticate',
+                url: process.env.VUE_APP_AUTH_URL,
                 headers: {'X-ApiKey': vm.apiKey}
             }).then(function (response) {
                 console.log(response)
@@ -44,18 +43,18 @@ export default {
                 console.log(error)
                 if (error.response.status == 500) {
                     vm.$notify({
-                    group: 'main',
-                    title: 'authentication',
-                    type: 'error',
-                    text: 'Internal server error'
-                })
+                        group: 'main',
+                        title: 'Authentication Failed',
+                        type: 'error',
+                        text: 'Internal server error'
+                    })
                 } else {
                     vm.$notify({
-                    group: 'main',
-                    title: 'authentication',
-                    type: 'error',
-                    text: 'Invalid API Key'
-                })
+                        group: 'main',
+                        title: 'Authentication Failed',
+                        type: 'error',
+                        text: 'Invalid API Key'
+                    })
                 }
             })
         }
