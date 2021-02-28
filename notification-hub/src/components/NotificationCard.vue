@@ -1,6 +1,6 @@
 <template>
     <v-col class="notification" align="center" justify="center" cols=6>
-        <v-card dense>
+        <v-card :id="this.notification_id" dense>
             <v-expansion-panels v-model="panel" :disabled=disabled>
                 <v-expansion-panel>
                     <v-expansion-panel-header>
@@ -57,6 +57,15 @@ export default {
         notificationContent() {
             let content = this.notification.notification
             return content.charAt(0).toUpperCase() + content.slice(1)
+        },
+        notificationColor() {
+            const source = this.notification.metadata.source
+            console.log(source)
+            if (source != null) {
+                return this.colorMappings[source]
+            } else {
+                return "red"
+            }
         }
     },
     methods: {
@@ -87,9 +96,19 @@ export default {
             })
         }
     },
+    mounted() {
+        let vm = this;
+        var card = document.getElementById(vm.notification_id);
+        card.style.borderLeft = vm.notificationColor
+    },
     data: () => ({
         disabled: false,
-        panel: [0, 1]
+        panel: [0, 1],
+        colorMappings: {
+            "web-scraper": "5px solid #6DCCFF",
+            "yelp-api-connector": "5px solid #FF4B4B",
+            "google-api-connector": "5px solid #C7FF4B"
+        }
     })
 }
 </script>
