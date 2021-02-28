@@ -107,7 +107,8 @@ export default {
         colorMappings: {
             "web-scraper": "5px solid #6DCCFF",
             "yelp-api-connector": "5px solid #FF4B4B",
-            "google-api-connector": "5px solid #C7FF4B"
+            "google-api-connector": "5px solid #C7FF4B",
+            "parked-domain-checker": "5px solid #FF7600"
         }
     })
 }

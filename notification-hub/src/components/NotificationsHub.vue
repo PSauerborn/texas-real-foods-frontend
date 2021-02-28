@@ -34,6 +34,12 @@
                                 </v-list-item-icon>
                                 <v-list-item-title>Web Notifications</v-list-item-title>
                             </v-list-item>
+                            <v-list-item @click="getNotificationsBySource('parked-domain-checker')">
+                                <v-list-item-icon>
+                                    <v-icon>mdi-web</v-icon>
+                                </v-list-item-icon>
+                                <v-list-item-title>Parked Domain Notifications</v-list-item-title>
+                            </v-list-item>
                             <v-list-item @click="markAllAsRead">
                                 <v-list-item-icon>
                                     <v-icon>mdi-delete</v-icon>
