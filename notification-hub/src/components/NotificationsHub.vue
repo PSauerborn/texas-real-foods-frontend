@@ -81,12 +81,13 @@
                 <v-divider class="mx-4"></v-divider>
                 <v-container class="notifications-container" fluid>
                     <v-row align="center" justify="center" dense>
-                        <notification-card v-for="(notification, i) in notifications"
+                        <notification-card v-for="notification in notifications"
                             @notificationRead="getNotifications"
                             :notification_id=notification.notification_id
+                            :notification_source=notification.notification.metadata.source
                             :notification=notification.notification
                             :api_key=apiKey
-                            :key="i"/>
+                            :key="notification.notification_id"/>
                     </v-row>
                 </v-container>
             </v-sheet>
@@ -150,7 +151,6 @@ export default {
                 url: process.env.VUE_APP_BASE_API_URL + 'notifications/unread?filter=source:' + source,
                 headers: {'X-ApiKey': vm.apiKey}
             }).then(function (response) {
-                console.log(response)
                 vm.notifications = response.data.notifications
                 vm.totalNotificationsCount = response.data.count
                 vm.$notify({

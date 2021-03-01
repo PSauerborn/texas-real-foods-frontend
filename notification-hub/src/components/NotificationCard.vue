@@ -1,6 +1,6 @@
 <template>
     <v-col class="notification" align="center" justify="center" cols=6>
-        <v-card :id="this.notification_id" dense>
+        <v-card :id="notification_id" dense>
             <v-expansion-panels v-model="panel" :disabled=disabled>
                 <v-expansion-panel>
                     <v-expansion-panel-header>
@@ -51,6 +51,7 @@ export default {
     props: {
         notification: Object,
         notification_id: String,
+        notification_source: String,
         api_key: String
     },
     computed: {
@@ -59,8 +60,7 @@ export default {
             return content.charAt(0).toUpperCase() + content.slice(1)
         },
         notificationColor() {
-            const source = this.notification.metadata.source
-            console.log(source)
+            const source = this.notification_source
             if (source != null) {
                 return this.colorMappings[source]
             } else {
@@ -98,8 +98,11 @@ export default {
     },
     mounted() {
         let vm = this;
-        var card = document.getElementById(vm.notification_id);
-        card.style.borderLeft = vm.notificationColor
+        this.$nextTick(() => {
+            var card = document.getElementById(vm.notification_id);
+            card.style.borderLeft = vm.notificationColor
+        })
+
     },
     data: () => ({
         disabled: false,
