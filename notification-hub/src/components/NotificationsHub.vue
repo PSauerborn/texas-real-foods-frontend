@@ -36,7 +36,7 @@
                             </v-list-item>
                             <v-list-item @click="getNotificationsBySource('parked-domain-checker')">
                                 <v-list-item-icon>
-                                    <v-icon>mdi-web</v-icon>
+                                    <v-icon>mdi-parking</v-icon>
                                 </v-list-item-icon>
                                 <v-list-item-title>Parked Domain Notifications</v-list-item-title>
                             </v-list-item>
